@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Newage Import Export Online Network</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5C15 5 10 8 8 13C6 18 8 23 12 26C16 29 20 30 20 30C20 30 24 29 28 26C32 23 34 18 32 13C30 8 25 5 20 5Z" fill="url(#onionGradient)"/>
+                            <path d="M20 8C16 8 12 10 11 14C10 18 11 21 14 23C17 25 20 26 20 26C20 26 23 25 26 23C29 21 30 18 29 14C28 10 24 8 20 8Z" fill="url(#onionGradient2)"/>
+                            <defs>
+                                <linearGradient id="onionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#d9d5e0"/>
+                                    <stop offset="50%" style="stop-color:#E91E63"/>
+                                    <stop offset="100%" style="stop-color:#FF9800"/>
+                                </linearGradient>
+                                <linearGradient id="onionGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#d9d5e0"/>
+                                    <stop offset="50%" style="stop-color:#F06292"/>
+                                    <stop offset="100%" style="stop-color:#FFB74D"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-onie">Onie</span><span class="logo-on">on</span>
+                    </div>
+                </div>
+                <h1 class="hero-title">Our Newage Import Export Online Network</h1>
+                <p class="hero-subtitle">Comprehensive trade information for importers and exporters worldwide</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Search Interface -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Enter HSN code (e.g., 8517.62.00) or product name (e.g., smartphones)">
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                            Search
+                        </button>
+                    </div>
+                    <div class="search-suggestions">
+                        <p>Try searching: <span class="suggestion" data-search="8517.62.00">8517.62.00</span>, 
+                        <span class="suggestion" data-search="smartphones">smartphones</span>, 
+                        <span class="suggestion" data-search="6109.10.00">6109.10.00</span>, 
+                        <span class="suggestion" data-search="t-shirts">t-shirts</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state hidden">
+                <div class="loading-spinner"></div>
+                <p>Searching trade information...</p>
+            </div>
+
+            <!-- Search Results -->
+            <div id="searchResults" class="search-results hidden">
+                <!-- Product Information Card -->
+                <section class="product-info">
+                    <div class="card">
+                        <div class="card__header">
+                            <h2><i class="fas fa-box"></i> Product Information</h2>
+                        </div>
+                        <div class="card__body">
+                            <div class="product-details">
+                                <div class="product-main">
+                                    <h3 id="productHsn">HSN Code: </h3>
+                                    <p id="productDescription"></p>
+                                    <span id="productCategory" class="status status--info"></span>
+                                </div>
+                                <div class="product-duties">
+                                    <div class="duty-item">
+                                        <label>GST Rate:</label>
+                                        <span id="gstRate"></span>
+                                    </div>
+                                    <div class="duty-item">
+                                        <label>Import Duty:</label>
+                                        <span id="importDuty"></span>
+                                    </div>
+                                    <div class="duty-item">
+                                        <label>Export Duty:</label>
+                                        <span id="exportDuty"></span>
+                                    </div>
+                                </div>
+                                <div class="pricing-info">
+                                    <div class="price-main">
+                                        <h4>Current Market Price</h4>
+                                        <div class="price-display">
+                                            <span id="currentPrice" class="price-value"></span>
+                                            <span id="priceRange" class="price-range"></span>
+                                        </div>
+                                        <div class="price-trend">
+                                            <span id="priceTrend" class="trend-indicator"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Top Trading Countries -->
+                <section class="trading-countries">
+                    <div class="countries-grid">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3><i class="fas fa-arrow-down"></i> Top Importing Countries</h3>
+                            </div>
+                            <div class="card__body">
+                                <div id="topImporters" class="country-list"></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__header">
+                                <h3><i class="fas fa-arrow-up"></i> Top Exporting Countries</h3>
+                            </div>
+                            <div class="card__body">
+                                <div id="topExporters" class="country-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Transportation Methods -->
+                <section class="transportation">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3><i class="fas fa-shipping-fast"></i> Transportation Methods Comparison</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="transport-grid">
+                                <div class="transport-card air">
+                                    <div class="transport-header">
+                                        <i class="fas fa-plane"></i>
+                                        <h4>Air Freight</h4>
+                                    </div>
+                                    <div class="transport-details">
+                                        <div class="detail-item">
+                                            <strong>Speed:</strong> <span>1-7 days</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <strong>Cost:</strong> <span>$4-12 per kg</span>
+                                        </div>
+                                        <div class="pros-cons">
+                                            <div class="pros">
+                                                <strong>Pros:</strong>
+                                                <ul>
+                                                    <li>Fastest delivery</li>
+                                                    <li>High security</li>
+                                                    <li>Reliable scheduling</li>
+                                                </ul>
+                                            </div>
+                                            <div class="cons">
+                                                <strong>Cons:</strong>
+                                                <ul>
+                                                    <li>Most expensive</li>
+                                                    <li>Weight restrictions</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="transport-card sea">
+                                    <div class="transport-header">
+                                        <i class="fas fa-ship"></i>
+                                        <h4>Sea Freight</h4>
+                                    </div>
+                                    <div class="transport-details">
+                                        <div class="detail-item">
+                                            <strong>Speed:</strong> <span>15-45 days</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <strong>Cost:</strong> <span>$1,500-5,000 per container</span>
+                                        </div>
+                                        <div class="pros-cons">
+                                            <div class="pros">
+                                                <strong>Pros:</strong>
+                                                <ul>
+                                                    <li>Most cost-effective</li>
+                                                    <li>High capacity</li>
+                                                    <li>Environmentally friendly</li>
+                                                </ul>
+                                            </div>
+                                            <div class="cons">
+                                                <strong>Cons:</strong>
+                                                <ul>
+                                                    <li>Slowest option</li>
+                                                    <li>Weather dependent</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="transport-card road">
+                                    <div class="transport-header">
+                                        <i class="fas fa-truck"></i>
+                                        <h4>Road Freight</h4>
+                                    </div>
+                                    <div class="transport-details">
+                                        <div class="detail-item">
+                                            <strong>Speed:</strong> <span>1-7 days</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <strong>Cost:</strong> <span>$0.03-0.07 per km</span>
+                                        </div>
+                                        <div class="pros-cons">
+                                            <div class="pros">
+                                                <strong>Pros:</strong>
+                                                <ul>
+                                                    <li>Door-to-door delivery</li>
+                                                    <li>Flexible routing</li>
+                                                    <li>Real-time tracking</li>
+                                                </ul>
+                                            </div>
+                                            <div class="cons">
+                                                <strong>Cons:</strong>
+                                                <ul>
+                                                    <li>Limited to land routes</li>
+                                                    <li>Traffic delays</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="transport-card rail">
+                                    <div class="transport-header">
+                                        <i class="fas fa-train"></i>
+                                        <h4>Rail Freight</h4>
+                                    </div>
+                                    <div class="transport-details">
+                                        <div class="detail-item">
+                                            <strong>Speed:</strong> <span>3-15 days</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <strong>Cost:</strong> <span>$0.02-0.06 per ton-km</span>
+                                        </div>
+                                        <div class="pros-cons">
+                                            <div class="pros">
+                                                <strong>Pros:</strong>
+                                                <ul>
+                                                    <li>Environmentally friendly</li>
+                                                    <li>Cost-effective for bulk</li>
+                                                    <li>Weather independent</li>
+                                                </ul>
+                                            </div>
+                                            <div class="cons">
+                                                <strong>Cons:</strong>
+                                                <ul>
+                                                    <li>Limited network</li>
+                                                    <li>Fixed routes</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Required Documentation -->
+                <section class="documentation">
+                    <div class="docs-grid">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3><i class="fas fa-file-export"></i> Export Documents</h3>
+                            </div>
+                            <div class="card__body">
+                                <div id="exportDocs" class="doc-list"></div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__header">
+                                <h3><i class="fas fa-file-import"></i> Import Documents</h3>
+                            </div>
+                            <div class="card__body">
+                                <div id="importDocs" class="doc-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Insurance Information -->
+                <section class="insurance">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3><i class="fas fa-shield-alt"></i> Insurance Information</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="insurance-grid">
+                                <div class="insurance-section">
+                                    <h4>Marine Cargo Insurance</h4>
+                                    <p>Warehouse to warehouse protection</p>
+                                    <div class="coverage-types">
+                                        <div class="coverage-item">
+                                            <h5>All Risk Coverage (ICC-A)</h5>
+                                            <p>Broadest coverage for accidental loss/damage</p>
+                                            <span class="premium-rate">Premium: 0.3-0.5%</span>
+                                        </div>
+                                        <div class="coverage-item">
+                                            <h5>Named Perils Coverage (ICC-B)</h5>
+                                            <p>Medium coverage for specified risks</p>
+                                            <span class="premium-rate">Premium: 0.2-0.3%</span>
+                                        </div>
+                                        <div class="coverage-item">
+                                            <h5>Basic Coverage (ICC-C)</h5>
+                                            <p>Basic coverage for limited risks</p>
+                                            <span class="premium-rate">Premium: 0.1-0.2%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="insurance-section">
+                                    <h4>Trade Credit Insurance</h4>
+                                    <p>Protection against buyer non-payment</p>
+                                    <div class="benefits">
+                                        <ul>
+                                            <li>Credit enhancement</li>
+                                            <li>Market intelligence</li>
+                                            <li>Debt collection</li>
+                                            <li>Political risk coverage</li>
+                                        </ul>
+                                    </div>
+                                    <span class="premium-rate">Premium: 0.15-0.75% of credit limit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Country-Specific Requirements -->
+                <section class="country-requirements">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3><i class="fas fa-globe"></i> Country-Specific Requirements</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="country-tabs">
+                                <div class="tab-headers">
+                                    <button class="tab-btn active" data-country="United States">United States</button>
+                                    <button class="tab-btn" data-country="Germany">Germany</button>
+                                    <button class="tab-btn" data-country="United Kingdom">United Kingdom</button>
+                                    <button class="tab-btn" data-country="China">China</button>
+                                </div>
+                                <div class="tab-content">
+                                    <div id="countryDetails" class="country-details"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResults" class="no-results hidden">
+                <div class="card">
+                    <div class="card__body">
+                        <div class="no-results-content">
+                            <i class="fas fa-search"></i>
+                            <h3>No Results Found</h3>
+                            <p>We couldn't find any products matching your search. Please try different keywords or HSN codes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
