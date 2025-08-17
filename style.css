@@ -12,7 +12,7 @@
   --color-charcoal-700: rgba(31, 33, 33, 1);
   --color-charcoal-800: rgba(38, 40, 40, 1);
   --color-slate-900: rgba(19, 52, 59, 1);
-  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-300: rgb(6, 53, 58);
   --color-teal-400: rgba(45, 166, 178, 1);
   --color-teal-500: rgba(33, 128, 141, 1);
   --color-teal-600: rgba(29, 116, 128, 1);
@@ -751,29 +751,13 @@ select.form-control {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-12);
     margin-bottom: var(--space-24);
 }
 
-.logo-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo-text {
-    font-family: var(--font-family-base);
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: -0.02em;
-}
-
-.logo-onie {
-    color: #6A3ABF;
-}
-
-.logo-on {
-    color: #FF9800;
+.main-logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 .hero-content h1 {
