@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load trade data from the provided JSON file
 async function loadTradeData() {
     try {
-        const response = await fetch('https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/b930a8aae9405f5286a85093288687c0/6611075e-91c2-4f33-9524-8ef0ebb9899b/4d7d0ca5.json');
+        const response = await fetch('trade_data.json');
         tradeData = await response.json();
     } catch (error) {
         console.error('Error loading trade data:', error);
