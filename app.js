@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadTradeData() {
     try {
         const response = await fetch('trade_data.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         tradeData = await response.json();
     } catch (error) {
         console.error('Error loading trade data:', error);
