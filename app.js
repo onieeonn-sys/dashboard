@@ -340,8 +340,18 @@ function displaySearchResults(product) {
     // Update pricing information
     const pricing = tradeData.pricing_information.sample_prices[product.hsn_code];
     if (pricing) {
-        const priceUnit = pricing.average_price_per_unit ? 'per unit' : 'per ton';
-        const priceValue = pricing.average_price_per_unit || pricing.average_price_per_ton;
+        let priceUnit, priceValue;
+        
+        if (pricing.average_price_per_unit) {
+            priceUnit = 'per unit';
+            priceValue = pricing.average_price_per_unit;
+        } else if (pricing.average_price_per_ton) {
+            priceUnit = 'per ton';
+            priceValue = pricing.average_price_per_ton;
+        } else if (pricing.average_price_per_kiloliter) {
+            priceUnit = 'per kiloliter';
+            priceValue = pricing.average_price_per_kiloliter;
+        }
         
         document.getElementById('currentPrice').textContent = `$${priceValue} ${priceUnit}`;
         document.getElementById('priceRange').textContent = `Range: $${pricing.price_range.min} - $${pricing.price_range.max}`;

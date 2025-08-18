@@ -762,6 +762,26 @@
         },
         "market_trend": "increasing",
         "last_updated": "2025-08-14"
+      },
+      "2710.19.10": {
+        "average_price_per_kiloliter": 815,
+        "currency": "USD",
+        "price_range": {
+          "min": 680,
+          "max": 950
+        },
+        "market_trend": "volatile",
+        "last_updated": "2025-01-14"
+      },
+      "7208.10.00": {
+        "average_price_per_ton": 685,
+        "currency": "USD",
+        "price_range": {
+          "min": 520,
+          "max": 850
+        },
+        "market_trend": "cyclical",
+        "last_updated": "2025-01-14"
       }
     }
   }
