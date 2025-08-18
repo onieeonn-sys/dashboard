@@ -295,12 +295,27 @@ function searchProduct(query) {
         'smartphones': '8517.62.00',
         'mobile': '8517.62.00',
         'phone': '8517.62.00',
+        'car': '8703.23.91',
+        'cars': '8703.23.91',
+        'automobile': '8703.23.91',
+        'vehicle': '8703.23.91',
+        'laptop': '8471.30.10',
+        'laptops': '8471.30.10',
+        'computer': '8471.30.10',
+        'notebook': '8471.30.10',
         'tshirt': '6109.10.00',
         't-shirt': '6109.10.00',
         'tshirts': '6109.10.00',
         't-shirts': '6109.10.00',
         'shirt': '6109.10.00',
-        'rice': '1006.30.00'
+        'rice': '1006.30.00',
+        'diesel': '2710.19.10',
+        'fuel': '2710.19.10',
+        'oil': '2710.19.10',
+        'petroleum': '2710.19.10',
+        'steel': '7208.10.00',
+        'metal': '7208.10.00',
+        'iron': '7208.10.00'
     };
 
     if (!product && searchMappings[query]) {
