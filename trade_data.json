@@ -3,41 +3,170 @@
     {
       "hsn_code": "8517.62.00",
       "description": "Machines for reception, conversion and transmission or regeneration of voice, images or other data, including switching and routing apparatus",
+      "detailed_description": "This category includes smartphones, routers, switches, modems, and other telecommunications equipment used for data transmission and networking.",
       "category": "Electrical, electronic equipment",
+      "subcategory": "Telecommunications Equipment",
       "gst_rate": 18,
       "export_duty": 0,
-      "import_duty": 10
-    },
-    {"hsn_code": "8703.23.91",
-      "description": "Motor cars, spark-ignition, cylinder >1500cc <=3000cc, new",
-      "category": "Automobiles",
-      "gst_rate": 28,
-      "export_duty": 0,
-      "import_duty": 60
+      "import_duty": 10,
+      "unit_of_measurement": "Number (NOS)",
+      "minimum_price_usd": 50,
+      "maximum_price_usd": 2500,
+      "average_price_usd": 450,
+      "quality_standards": ["BIS", "FCC", "CE", "RoHS"],
+      "certifications_required": ["WPC", "BIS", "Import License"],
+      "seasonal_demand": "High during Q4 (Oct-Dec)",
+      "market_trend": "Growing",
+      "growth_rate_percent": 12.5,
+      "major_suppliers": ["China", "South Korea", "Taiwan"],
+      "port_of_entry": ["JNPT Mumbai", "Chennai", "Bangalore Air"],
+      "storage_requirements": "Dry, temperature controlled",
+      "shelf_life": "5-10 years",
+      "packaging_type": "Anti-static packaging, cartons"
     },
     {
-    "hsn_code": "8471.30.10",
+      "hsn_code": "8703.23.91",
+      "description": "Motor cars, spark-ignition, cylinder >1500cc <=3000cc, new",
+      "detailed_description": "New passenger cars with petrol engines having cylinder capacity between 1500cc to 3000cc, including sedans, hatchbacks, and SUVs.",
+      "category": "Automobiles",
+      "subcategory": "Passenger Vehicles",
+      "gst_rate": 28,
+      "export_duty": 0,
+      "import_duty": 60,
+      "unit_of_measurement": "Number (NOS)",
+      "minimum_price_usd": 8000,
+      "maximum_price_usd": 45000,
+      "average_price_usd": 18500,
+      "quality_standards": ["ARAI", "BNVSAP", "Euro 6", "NCAP"],
+      "certifications_required": ["Type Approval", "Pollution Certificate", "Import License"],
+      "seasonal_demand": "High during festival seasons (Sep-Nov)",
+      "market_trend": "Stable",
+      "growth_rate_percent": 3.2,
+      "major_suppliers": ["Germany", "Japan", "South Korea"],
+      "port_of_entry": ["JNPT Mumbai", "Chennai", "Kandla"],
+      "storage_requirements": "Covered parking, rust protection",
+      "shelf_life": "15-20 years",
+      "packaging_type": "Protective wrapping, container shipping"
+    },
+    {
+      "hsn_code": "8471.30.10",
       "description": "Portable automatic data processing machines (laptops)",
+      "detailed_description": "Laptop computers, notebooks, ultrabooks, and portable workstations for personal and business use.",
       "category": "Computers",
+      "subcategory": "Portable Computing Devices",
       "gst_rate": 18,
       "export_duty": 0,
-      "import_duty": 20
+      "import_duty": 20,
+      "unit_of_measurement": "Number (NOS)",
+      "minimum_price_usd": 200,
+      "maximum_price_usd": 3500,
+      "average_price_usd": 750,
+      "quality_standards": ["BIS", "Energy Star", "EPEAT", "RoHS"],
+      "certifications_required": ["BIS Registration", "WPC Approval", "Import License"],
+      "seasonal_demand": "High during back-to-school season (Jun-Aug)",
+      "market_trend": "Growing",
+      "growth_rate_percent": 8.7,
+      "major_suppliers": ["China", "Taiwan", "Vietnam"],
+      "port_of_entry": ["Delhi Air", "Mumbai Air", "Bangalore Air"],
+      "storage_requirements": "Dry, dust-free environment",
+      "shelf_life": "5-7 years",
+      "packaging_type": "Anti-static foam, protective cartons"
     },
     {
       "hsn_code": "6109.10.00",
-      "description": "T-shirts, singlets and other vests, knitted or crocheted",
-      "category": "Textiles and Clothing",
+      "description": "T-shirts, singlets and other vests, knitted or crocheted, of cotton",
+      "detailed_description": "Cotton knitted garments including casual t-shirts, tank tops, vests, and undershirts for men, women, and children.",
+      "category": "Textiles",
+      "subcategory": "Knitted Cotton Garments",
       "gst_rate": 12,
       "export_duty": 0,
-      "import_duty": 10
+      "import_duty": 20,
+      "unit_of_measurement": "Number (NOS)",
+      "minimum_price_usd": 2,
+      "maximum_price_usd": 50,
+      "average_price_usd": 8,
+      "quality_standards": ["BIS", "OEKO-TEX", "GOTS", "Azo-free dyes"],
+      "certifications_required": ["Textile Committee Registration", "Import License"],
+      "seasonal_demand": "High during summer months (Mar-Jun)",
+      "market_trend": "Stable",
+      "growth_rate_percent": 5.3,
+      "major_suppliers": ["Bangladesh", "Vietnam", "China"],
+      "port_of_entry": ["JNPT Mumbai", "Tuticorin", "Kolkata"],
+      "storage_requirements": "Dry, ventilated warehouse",
+      "shelf_life": "2-3 years",
+      "packaging_type": "Polybags, cartons, compressed bales"
     },
     {
       "hsn_code": "1006.30.00",
       "description": "Semi-milled or wholly milled rice, whether or not polished or glazed",
+      "detailed_description": "Processed rice including white rice, parboiled rice, broken rice, and premium basmati varieties for domestic and export markets.",
       "category": "Food Products",
+      "subcategory": "Processed Cereals",
       "gst_rate": 5,
-      "export_duty": 0,
-      "import_duty": 80
+      "export_duty": 20,
+      "import_duty": 70,
+      "unit_of_measurement": "Metric Tons (MT)",
+      "minimum_price_usd": 300,
+      "maximum_price_usd": 1200,
+      "average_price_usd": 450,
+      "quality_standards": ["FSSAI", "BIS", "Codex Alimentarius", "ISO 22000"],
+      "certifications_required": ["FSSAI License", "Phytosanitary Certificate", "Export License"],
+      "seasonal_demand": "High during harvest season (Oct-Dec)",
+      "market_trend": "Growing",
+      "growth_rate_percent": 6.8,
+      "major_suppliers": ["Thailand", "Vietnam", "Pakistan"],
+      "port_of_entry": ["JNPT Mumbai", "Kandla", "Kolkata"],
+      "storage_requirements": "Dry, pest-free silos, temperature controlled",
+      "shelf_life": "12-18 months",
+      "packaging_type": "Jute bags, PP bags, bulk containers"
+    },
+    {
+      "hsn_code": "2710.19.10",
+      "description": "Light diesel oil",
+      "detailed_description": "Refined petroleum product used as fuel for diesel engines in vehicles, generators, and industrial machinery.",
+      "category": "Petroleum Products",
+      "subcategory": "Refined Fuels",
+      "gst_rate": 28,
+      "export_duty": 6,
+      "import_duty": 10,
+      "unit_of_measurement": "Kiloliters (KL)",
+      "minimum_price_usd": 600,
+      "maximum_price_usd": 900,
+      "average_price_usd": 750,
+      "quality_standards": ["BIS", "Euro VI", "ASTM D975", "ISO 8217"],
+      "certifications_required": ["Petroleum Import License", "BIS Certificate", "Pollution Control Board NOC"],
+      "seasonal_demand": "High during winter months (Nov-Feb)",
+      "market_trend": "Volatile",
+      "growth_rate_percent": 2.1,
+      "major_suppliers": ["UAE", "Saudi Arabia", "Iraq"],
+      "port_of_entry": ["JNPT Mumbai", "Kandla", "Paradip"],
+      "storage_requirements": "Temperature controlled tanks, fire safety measures",
+      "shelf_life": "6-12 months",
+      "packaging_type": "Bulk tankers, ISO containers"
+    },
+    {
+      "hsn_code": "7208.10.00",
+      "description": "Flat-rolled products of iron or non-alloy steel, hot-rolled",
+      "detailed_description": "Hot-rolled steel sheets and coils used in construction, automotive, and manufacturing industries.",
+      "category": "Metals",
+      "subcategory": "Steel Products",
+      "gst_rate": 18,
+      "export_duty": 15,
+      "import_duty": 10,
+      "unit_of_measurement": "Metric Tons (MT)",
+      "minimum_price_usd": 450,
+      "maximum_price_usd": 800,
+      "average_price_usd": 620,
+      "quality_standards": ["BIS", "ASTM A36", "JIS G3101", "EN 10025"],
+      "certifications_required": ["BIS License", "Steel Import Monitoring System", "Quality Certificate"],
+      "seasonal_demand": "High during construction season (Oct-Mar)",
+      "market_trend": "Cyclical",
+      "growth_rate_percent": 4.2,
+      "major_suppliers": ["China", "Japan", "South Korea"],
+      "port_of_entry": ["JNPT Mumbai", "Kandla", "Vizag"],
+      "storage_requirements": "Covered storage, rust prevention",
+      "shelf_life": "Indefinite with proper storage",
+      "packaging_type": "Steel coils, bundled sheets"
     }
   ],
   "trade_statistics": {
@@ -122,6 +251,60 @@
           "value_usd": 380000000,
           "percentage": 8.3
         }
+      ],
+      "2710.19.10": [
+        {
+          "country": "India",
+          "value_usd": 2800000000,
+          "percentage": 35.2
+        },
+        {
+          "country": "China",
+          "value_usd": 1200000000,
+          "percentage": 15.1
+        },
+        {
+          "country": "Singapore",
+          "value_usd": 950000000,
+          "percentage": 11.9
+        },
+        {
+          "country": "Japan",
+          "value_usd": 780000000,
+          "percentage": 9.8
+        },
+        {
+          "country": "South Korea",
+          "value_usd": 650000000,
+          "percentage": 8.2
+        }
+      ],
+      "7208.10.00": [
+        {
+          "country": "China",
+          "value_usd": 1500000000,
+          "percentage": 28.5
+        },
+        {
+          "country": "India",
+          "value_usd": 890000000,
+          "percentage": 16.9
+        },
+        {
+          "country": "Turkey",
+          "value_usd": 650000000,
+          "percentage": 12.3
+        },
+        {
+          "country": "Brazil",
+          "value_usd": 480000000,
+          "percentage": 9.1
+        },
+        {
+          "country": "Russia",
+          "value_usd": 420000000,
+          "percentage": 8.0
+        }
       ]
     },
     "top_exporters": {
@@ -204,6 +387,60 @@
           "country": "Myanmar",
           "value_usd": 850000000,
           "percentage": 3.8
+        }
+      ],
+      "2710.19.10": [
+        {
+          "country": "Saudi Arabia",
+          "value_usd": 4200000000,
+          "percentage": 32.1
+        },
+        {
+          "country": "UAE",
+          "value_usd": 2800000000,
+          "percentage": 21.4
+        },
+        {
+          "country": "Kuwait",
+          "value_usd": 1900000000,
+          "percentage": 14.5
+        },
+        {
+          "country": "Iraq",
+          "value_usd": 1500000000,
+          "percentage": 11.5
+        },
+        {
+          "country": "Russia",
+          "value_usd": 1200000000,
+          "percentage": 9.2
+        }
+      ],
+      "7208.10.00": [
+        {
+          "country": "China",
+          "value_usd": 3200000000,
+          "percentage": 28.9
+        },
+        {
+          "country": "Japan",
+          "value_usd": 2100000000,
+          "percentage": 19.0
+        },
+        {
+          "country": "South Korea",
+          "value_usd": 1800000000,
+          "percentage": 16.3
+        },
+        {
+          "country": "Germany",
+          "value_usd": 1200000000,
+          "percentage": 10.8
+        },
+        {
+          "country": "Russia",
+          "value_usd": 950000000,
+          "percentage": 8.6
         }
       ]
     }
