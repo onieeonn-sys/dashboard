@@ -17,13 +17,28 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load trade data from the provided JSON file
 async function loadTradeData() {
     try {
+        showLoading();
         const response = await fetch('trade_data.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         tradeData = await response.json();
+        console.log('Trade data loaded successfully:', tradeData);
+        hideLoading();
     } catch (error) {
         console.error('Error loading trade data:', error);
+        hideLoading();
+        // Show error message to user
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.innerHTML = `
+            <div class="alert alert-danger" role="alert">
+                <i class="fas fa-exclamation-triangle"></i>
+                Failed to load trade data. Please check your internet connection and try again.
+                <br><small>Error: ${error.message}</small>
+            </div>
+        `;
+        document.querySelector('.container').prepend(errorDiv);
         // Fallback to embedded data
         tradeData = {
             "hsn_codes": [
@@ -276,16 +291,20 @@ function handleSearch() {
 function searchProduct(query) {
     if (!tradeData) return null;
 
+    // Check if data structure has products array instead of hsn_codes
+    const products = tradeData.products || tradeData.hsn_codes;
+    if (!products) return null;
+
     // Search by HSN code first
-    let product = tradeData.hsn_codes.find(p => 
-        p.hsn_code.toLowerCase().includes(query)
+    let product = products.find(p => 
+        (p.hsnCode || p.hsn_code).toLowerCase().includes(query)
     );
 
     // If not found, search by description/name
     if (!product) {
-        product = tradeData.hsn_codes.find(p => 
-            p.description.toLowerCase().includes(query) ||
-            p.category.toLowerCase().includes(query)
+        product = products.find(p => 
+            (p.productDescription || p.description).toLowerCase().includes(query) ||
+            (p.productCategory || p.category).toLowerCase().includes(query)
         );
     }
 
@@ -319,8 +338,8 @@ function searchProduct(query) {
     };
 
     if (!product && searchMappings[query]) {
-        product = tradeData.hsn_codes.find(p => 
-            p.hsn_code === searchMappings[query]
+        product = products.find(p => 
+            (p.hsnCode || p.hsn_code) === searchMappings[query]
         );
     }
 
@@ -330,55 +349,85 @@ function searchProduct(query) {
 // Display search results
 function displaySearchResults(product) {
     // Update product information
-    document.getElementById('productHsn').textContent = `HSN Code: ${product.hsn_code}`;
-    document.getElementById('productDescription').textContent = product.description;
-    document.getElementById('productCategory').textContent = product.category;
-    document.getElementById('gstRate').textContent = `${product.gst_rate}%`;
-    document.getElementById('importDuty').textContent = `${product.import_duty}%`;
-    document.getElementById('exportDuty').textContent = `${product.export_duty}%`;
+    document.getElementById('productHsn').textContent = `HSN Code: ${product.hsnCode || product.hsn_code}`;
+    document.getElementById('productDescription').textContent = product.productName || product.description;
+    document.getElementById('productCategory').textContent = product.productCategory || product.category;
+    document.getElementById('gstRate').textContent = `${product.gstRate || product.gst_rate}%`;
+    document.getElementById('importDuty').textContent = `${product.importDuty || product.import_duty}%`;
+    document.getElementById('exportDuty').textContent = `${product.exportDuty || product.export_duty}%`;
 
     // Update pricing information
-    const pricing = tradeData.pricing_information.sample_prices[product.hsn_code];
-    if (pricing) {
-        let priceUnit, priceValue;
+    let priceUnit, priceValue;
+    
+    if (product.pricePerUnit || product.average_price_per_unit) {
+        priceUnit = 'per unit';
+        priceValue = product.pricePerUnit || product.average_price_per_unit;
+    } else if (product.pricePerTon || product.average_price_per_ton) {
+        priceUnit = 'per ton';
+        priceValue = product.pricePerTon || product.average_price_per_ton;
+    } else if (product.pricePerKiloliter || product.average_price_per_kiloliter) {
+        priceUnit = 'per kiloliter';
+        priceValue = product.pricePerKiloliter || product.average_price_per_kiloliter;
+    }
+    
+    if (priceValue) {
+        document.getElementById('currentPrice').textContent = `₹${formatNumber(priceValue)} ${priceUnit}`;
+    }
+    
+    const minPrice = product.minimumPrice || product.minimum_price_inr;
+    const maxPrice = product.maximumPrice || product.maximum_price_inr;
+    if (minPrice && maxPrice) {
+        document.getElementById('priceRange').textContent = `Range: ₹${formatNumber(minPrice)} - ₹${formatNumber(maxPrice)}`;
+    }
+    
+    const trendElement = document.getElementById('priceTrend');
+    const marketTrend = product.marketTrend || product.market_trend;
+    if (marketTrend) {
+        trendElement.textContent = `${marketTrend.charAt(0).toUpperCase() + marketTrend.slice(1)} trend`;
+        trendElement.className = `trend-indicator ${marketTrend}`;
         
-        if (pricing.average_price_per_unit) {
-            priceUnit = 'per unit';
-            priceValue = pricing.average_price_per_unit;
-        } else if (pricing.average_price_per_ton) {
-            priceUnit = 'per ton';
-            priceValue = pricing.average_price_per_ton;
-        } else if (pricing.average_price_per_kiloliter) {
-            priceUnit = 'per kiloliter';
-            priceValue = pricing.average_price_per_kiloliter;
-        }
-        
-        document.getElementById('currentPrice').textContent = `$${priceValue} ${priceUnit}`;
-        document.getElementById('priceRange').textContent = `Range: $${pricing.price_range.min} - $${pricing.price_range.max}`;
-        
-        const trendElement = document.getElementById('priceTrend');
-        trendElement.textContent = `${pricing.market_trend.charAt(0).toUpperCase() + pricing.market_trend.slice(1)} trend`;
-        trendElement.className = `trend-indicator ${pricing.market_trend}`;
-        
-        if (pricing.market_trend === 'increasing') {
+        if (marketTrend === 'Growing') {
             trendElement.innerHTML = '<i class="fas fa-arrow-up"></i> ' + trendElement.textContent;
-        } else if (pricing.market_trend === 'decreasing') {
+        } else if (marketTrend === 'Declining') {
             trendElement.innerHTML = '<i class="fas fa-arrow-down"></i> ' + trendElement.textContent;
         } else {
             trendElement.innerHTML = '<i class="fas fa-minus"></i> ' + trendElement.textContent;
         }
     }
 
-    // Update trading countries
-    displayTradingCountries(product.hsn_code);
-    
-    // Update documentation
-    displayDocumentation();
-    
-    // Initialize country requirements with first tab
-    initializeCountryTabs();
+    // Update product specifications
+     document.getElementById('unitOfMeasurement').textContent = product.unitOfMeasurement || product.unit_of_measurement || 'N/A';
+     document.getElementById('typicalPackaging').textContent = product.typicalPackaging || product.packaging_type || 'N/A';
+     document.getElementById('shelfLife').textContent = product.shelfLife || product.shelf_life || 'N/A';
+     
+     // Update quality and compliance
+     document.getElementById('qualityStandards').textContent = product.qualityStandards || product.quality_standards || 'N/A';
+     document.getElementById('certificationsRequired').textContent = product.certificationsRequired || product.certifications || 'N/A';
+     
+     // Update market information
+     document.getElementById('exportMarkets').textContent = product.exportMarket || product.major_suppliers || 'N/A';
+     document.getElementById('importMarkets').textContent = product.importMarket || product.port_of_entry || 'N/A';
+     document.getElementById('seasonality').textContent = product.seasonality || product.seasonal_demand || 'N/A';
+     document.getElementById('tradeRestrictions').textContent = product.tradeRestrictions || 'None specified';
+     
+     // Update procedures and documentation
+     document.getElementById('exportProcedures').textContent = product.exportProcedure || 'Standard export procedure as per government regulations';
+     document.getElementById('importProcedures').textContent = product.importProcedure || 'Standard import procedure as per government regulations';
+     document.getElementById('documentationRequired').textContent = product.documentationRequired || 'Standard trade documentation including invoice, packing list, and certificates';
+     
+     // Update storage information
+     document.getElementById('storageConditions').textContent = product.storageCondition || product.storage_requirements || 'N/A';
 
-    // Show results
+    // Update trading countries
+     displayTradingCountries(product.hsnCode || product.hsn_code);
+     
+     // Update documentation
+     displayDocumentation(product.hsnCode || product.hsn_code);
+     
+     // Initialize country requirements with first tab
+     initializeCountryTabs();
+ 
+     // Show results
     searchResults.classList.remove('hidden');
     noResults.classList.add('hidden');
 }
