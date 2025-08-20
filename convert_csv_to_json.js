@@ -57,6 +57,7 @@ function convertToProduct(csvRow) {
         productSubcategory: subcategory || '',
         productDescription: description || '',
         unitOfMeasurement: unit || '',
+        typicalPackaging: packaging || '',
         shelfLife: shelfLife || '',
         importDuty: parseInt(importDuty) || 0,
         gstRate: parseInt(gstRate) || 0,
@@ -72,7 +73,8 @@ function convertToProduct(csvRow) {
         documentationRequired: documentation || '',
         minimumPrice: parsePrice(minPrice),
         maximumPrice: parsePrice(maxPrice),
-        averagePrice: parsePrice(avgPrice)
+        averagePrice: parsePrice(avgPrice),
+        pricePerUnit: parsePrice(avgPricePerUnit)
     };
 }
 

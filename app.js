@@ -354,7 +354,7 @@ function displaySearchResults(product) {
     document.getElementById('productCategory').textContent = product.productCategory || product.category;
     document.getElementById('gstRate').textContent = `${product.gstRate || product.gst_rate}%`;
     document.getElementById('importDuty').textContent = `${product.importDuty || product.import_duty}%`;
-    document.getElementById('exportDuty').textContent = `${product.exportDuty || product.export_duty}%`;
+    document.getElementById('exportDuty').textContent = `${product.exportDuty || product.export_duty || 0}%`;
 
     // Update pricing information
     let priceUnit, priceValue;
@@ -398,6 +398,8 @@ function displaySearchResults(product) {
     // Update product specifications
      document.getElementById('unitOfMeasurement').textContent = product.unitOfMeasurement || product.unit_of_measurement || 'N/A';
      document.getElementById('typicalPackaging').textContent = product.typicalPackaging || product.packaging_type || 'N/A';
+     const pricePerUnitValue = product.pricePerUnit || product.average_price_per_unit;
+     document.getElementById('pricePerUnit').textContent = pricePerUnitValue ? `₹${formatNumber(pricePerUnitValue)}` : 'N/A';
      document.getElementById('shelfLife').textContent = product.shelfLife || product.shelf_life || 'N/A';
      
      // Update quality and compliance
