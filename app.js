@@ -277,13 +277,13 @@ function handleSearch() {
     
     // Simulate search delay
     setTimeout(() => {
+        hideLoading();
         const result = searchProduct(query);
         if (result) {
             displaySearchResults(result);
         } else {
             showNoResults();
         }
-        hideLoading();
     }, 1000);
 }
 
