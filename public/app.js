@@ -820,7 +820,7 @@ function setupAuthForms() {
             
             app.setToken(result.token);
             app.setUser(result.user);
-            app.showToast('Registration successful! Welcome to TradeConnect!', 'success');
+            app.showToast('Registration successful! Welcome to Onieon!', 'success');
             app.navigateTo('dashboard');
             
         } catch (error) {

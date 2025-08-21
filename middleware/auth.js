@@ -63,8 +63,8 @@ function generateToken(user) {
 
     const token = jwt.sign(payload, JWT_SECRET, { 
         expiresIn: '24h',
-        issuer: 'tradeconnect-marketplace',
-        audience: 'tradeconnect-users'
+        issuer: 'onieon-marketplace',
+            audience: 'onieon-users'
     });
 
     // Add token to active sessions

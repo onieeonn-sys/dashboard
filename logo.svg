@@ -2,18 +2,19 @@
   <!-- Background circle -->
   <circle cx="60" cy="60" r="50" fill="url(#bgGradient)" stroke="#2563eb" stroke-width="2"/>
   
-  <!-- Globe/World icon -->
+  <!-- Onion/Globe hybrid icon -->
   <g transform="translate(35, 35)">
-    <!-- Globe outline -->
-    <circle cx="25" cy="25" r="20" fill="none" stroke="#ffffff" stroke-width="2"/>
-    <!-- Latitude lines -->
-    <ellipse cx="25" cy="25" rx="20" ry="8" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.7"/>
-    <ellipse cx="25" cy="25" rx="20" ry="15" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
-    <!-- Longitude line -->
-    <ellipse cx="25" cy="25" rx="8" ry="20" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.7"/>
-    <!-- Continents -->
-    <path d="M15 20 Q20 18 25 20 Q30 22 35 20" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
-    <path d="M12 30 Q18 28 22 30 Q28 32 32 30" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+    <!-- Outer onion layer -->
+    <ellipse cx="25" cy="25" rx="22" ry="18" fill="none" stroke="#ffffff" stroke-width="2"/>
+    <!-- Middle onion layer -->
+    <ellipse cx="25" cy="25" rx="16" ry="13" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+    <!-- Inner onion layer -->
+    <ellipse cx="25" cy="25" rx="10" ry="8" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+    <!-- Onion lines -->
+    <path d="M25 7 Q30 15 25 25 Q20 35 25 43" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.7"/>
+    <path d="M25 7 Q20 15 25 25 Q30 35 25 43" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.7"/>
+    <!-- Globe elements -->
+    <ellipse cx="25" cy="25" rx="22" ry="6" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
   </g>
   
   <!-- Arrow indicating trade/exchange -->
@@ -23,8 +24,8 @@
   </g>
   
   <!-- Company name -->
-  <text x="130" y="45" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1f2937">
-    Trade<tspan fill="#3b82f6">Connect</tspan>
+  <text x="130" y="45" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1f2937">
+    Onie<tspan fill="#3b82f6">on</tspan>
   </text>
   
   <!-- Tagline -->
