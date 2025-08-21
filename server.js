@@ -22,7 +22,7 @@ app.use('/api/', limiter);
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: process.env.CLIENT_URL || true, // Allow all origins in production if CLIENT_URL not set
   credentials: true
 }));
 
@@ -77,9 +77,10 @@ app.use((error, req, res, next) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 B2B Marketplace server running on port ${PORT}`);
   console.log(`📱 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🌐 Server accessible at http://0.0.0.0:${PORT}`);
 });
 
 module.exports = app;
