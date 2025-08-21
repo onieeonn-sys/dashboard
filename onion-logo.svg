@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <!-- Gradients for the onion layers -->
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A855F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FB923C;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#DC2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B91C1C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="magentaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EC4899;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#DB2777;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#BE185D;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main onion shape -->
+  <path d="M200 50 C250 50 300 100 320 150 C340 200 330 250 310 290 C290 330 250 360 200 360 C150 360 110 330 90 290 C70 250 60 200 80 150 C100 100 150 50 200 50 Z" fill="url(#orangeGradient)"/>
+  
+  <!-- Left purple section -->
+  <path d="M200 50 C170 60 140 90 120 130 C100 170 110 210 130 250 C150 290 180 320 200 360 C200 300 180 240 170 180 C160 120 180 80 200 50 Z" fill="url(#purpleGradient)"/>
+  
+  <!-- Top red section -->
+  <path d="M200 50 C220 80 240 120 250 160 C260 200 250 240 230 280 C210 320 200 360 200 360 C220 340 240 310 260 270 C280 230 290 190 280 150 C270 110 240 80 200 50 Z" fill="url(#redGradient)"/>
+  
+  <!-- Central magenta highlight -->
+  <path d="M200 120 C220 130 235 150 240 180 C245 210 235 240 220 260 C205 280 200 300 200 300 C210 280 220 250 215 220 C210 190 200 160 200 120 Z" fill="url(#magentaGradient)" opacity="0.8"/>
+  
+  <!-- Inner layers for depth -->
+  <ellipse cx="200" cy="200" rx="80" ry="100" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <ellipse cx="200" cy="200" rx="60" ry="80" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+  <ellipse cx="200" cy="200" rx="40" ry="60" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  
+  <!-- Highlight for 3D effect -->
+  <ellipse cx="180" cy="160" rx="20" ry="30" fill="rgba(255,255,255,0.4)" opacity="0.6"/>
+</svg>
