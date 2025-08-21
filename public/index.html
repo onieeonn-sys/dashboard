@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeConnect - B2B Import Export Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar hidden">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-globe"></i>
+                <span>TradeConnect</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link" data-page="dashboard">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+                <a href="#" class="nav-link" data-page="products" id="nav-products">
+                    <i class="fas fa-box"></i> Products
+                </a>
+                <a href="#" class="nav-link" data-page="requirements" id="nav-requirements">
+                    <i class="fas fa-clipboard-list"></i> Requirements
+                </a>
+                <a href="#" class="nav-link" data-page="bidding">
+                    <i class="fas fa-gavel"></i> Bidding
+                </a>
+                <a href="#" class="nav-link" data-page="orders">
+                    <i class="fas fa-shopping-cart"></i> Orders
+                </a>
+                <a href="#" class="nav-link" data-page="documents">
+                    <i class="fas fa-file-alt"></i> Documents
+                </a>
+                <a href="#" class="nav-link" data-page="analytics">
+                    <i class="fas fa-analytics"></i> Analytics
+                </a>
+            </div>
+            <div class="nav-user">
+                <div class="user-menu">
+                    <button class="user-btn" id="userMenuBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName">User</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="#" data-page="profile"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" data-page="settings"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Welcome/Landing Page -->
+        <div id="welcomePage" class="page active">
+            <div class="welcome-container">
+                <div class="welcome-header">
+                    <div class="logo-section">
+                        <i class="fas fa-globe"></i>
+                        <h1>TradeConnect</h1>
+                        <p>Global B2B Import-Export Marketplace</p>
+                    </div>
+                </div>
+                
+                <div class="welcome-content">
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-handshake"></i>
+                            <h3>Connect Globally</h3>
+                            <p>Connect with verified exporters and importers worldwide</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Secure Trading</h3>
+                            <p>Trade with confidence using our secure platform</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Real-time Analytics</h3>
+                            <p>Make informed decisions with comprehensive analytics</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-gavel"></i>
+                            <h3>Smart Bidding</h3>
+                            <p>Competitive bidding system for best deals</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-section">
+                        <button class="btn btn-primary btn-large" id="enterPortalBtn">
+                            <i class="fas fa-arrow-right"></i>
+                            Enter the Portal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="loginPage" class="page">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <i class="fas fa-globe"></i>
+                        <h2>Welcome Back</h2>
+                        <p>Sign in to your TradeConnect account</p>
+                    </div>
+                    
+                    <form id="loginForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <input type="email" id="loginEmail" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <input type="password" id="loginPassword" name="password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Sign In
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Don't have an account? 
+                            <a href="#" id="showRegisterBtn">Register here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Page -->
+        <div id="registerPage" class="page">
+            <div class="auth-container">
+                <div class="auth-card large">
+                    <div class="auth-header">
+                        <i class="fas fa-globe"></i>
+                        <h2>Join TradeConnect</h2>
+                        <p>Create your account and start trading globally</p>
+                    </div>
+                    
+                    <!-- Role Selection -->
+                    <div id="roleSelection" class="role-selection">
+                        <h3>Select Your Role</h3>
+                        <div class="role-options">
+                            <div class="role-card" data-role="exporter">
+                                <i class="fas fa-shipping-fast"></i>
+                                <h4>Exporter</h4>
+                                <p>Sell your products to global markets</p>
+                                <ul>
+                                    <li>List products with detailed specifications</li>
+                                    <li>Receive and manage buyer requirements</li>
+                                    <li>Submit competitive bids</li>
+                                    <li>Track orders and shipments</li>
+                                </ul>
+                            </div>
+                            <div class="role-card" data-role="importer">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h4>Importer</h4>
+                                <p>Source products from verified suppliers</p>
+                                <ul>
+                                    <li>Post detailed product requirements</li>
+                                    <li>Compare bids from multiple suppliers</li>
+                                    <li>Track order progress in real-time</li>
+                                    <li>Manage supplier relationships</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Registration Form -->
+                    <form id="registerForm" class="auth-form hidden">
+                        <input type="hidden" id="selectedRole" name="role">
+                        
+                        <div class="form-section">
+                            <h4><i class="fas fa-user"></i> Personal Information</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password *</label>
+                                <input type="password" id="password" name="password" required minlength="8">
+                                <small>Minimum 8 characters</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4><i class="fas fa-building"></i> Company Information</h4>
+                            <div class="form-group">
+                                <label for="companyName">Company Name *</label>
+                                <input type="text" id="companyName" name="companyName" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="companyType">Company Type *</label>
+                                    <select id="companyType" name="companyType" required>
+                                        <option value="">Select Type</option>
+                                        <option value="manufacturer">Manufacturer</option>
+                                        <option value="trader">Trader</option>
+                                        <option value="distributor">Distributor</option>
+                                        <option value="wholesaler">Wholesaler</option>
+                                        <option value="retailer">Retailer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="establishedYear">Established Year</label>
+                                    <input type="number" id="establishedYear" name="establishedYear" min="1900" max="2024">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="companyAddress">Company Address *</label>
+                                <textarea id="companyAddress" name="companyAddress" rows="3" required></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="country">Country *</label>
+                                    <select id="country" name="country" required>
+                                        <option value="">Select Country</option>
+                                        <option value="US">United States</option>
+                                        <option value="IN">India</option>
+                                        <option value="CN">China</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="JP">Japan</option>
+                                        <option value="FR">France</option>
+                                        <option value="IT">Italy</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="AU">Australia</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="website">Company Website</label>
+                                    <input type="url" id="website" name="website" placeholder="https://">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4><i class="fas fa-file-alt"></i> Business Details</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="iecCode">IEC Code</label>
+                                    <input type="text" id="iecCode" name="iecCode" placeholder="Import Export Code">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gstNumber">GST Number</label>
+                                    <input type="text" id="gstNumber" name="gstNumber">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="businessDescription">Business Description</label>
+                                <textarea id="businessDescription" name="businessDescription" rows="3" 
+                                    placeholder="Describe your business, products, and services"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="backToRoleBtn">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-user-plus"></i> Create Account
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Already have an account? 
+                            <a href="#" id="showLoginBtn">Sign in here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <h1>Dashboard</h1>
+                    <div class="dashboard-actions">
+                        <select id="dashboardPeriod" class="form-select">
+                            <option value="7d">Last 7 days</option>
+                            <option value="30d" selected>Last 30 days</option>
+                            <option value="90d">Last 90 days</option>
+                            <option value="1y">Last year</option>
+                        </select>
+                        <button class="btn btn-primary" id="refreshDashboard">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="dashboardContent">
+                    <!-- Dashboard content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Page -->
+        <div id="productsPage" class="page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>Products</h1>
+                    <div class="page-actions">
+                        <button class="btn btn-primary" id="addProductBtn">
+                            <i class="fas fa-plus"></i> Add Product
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="productsContent">
+                    <!-- Products content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Requirements Page -->
+        <div id="requirementsPage" class="page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>Requirements</h1>
+                    <div class="page-actions">
+                        <button class="btn btn-primary" id="addRequirementBtn">
+                            <i class="fas fa-plus"></i> Post Requirement
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="requirementsContent">
+                    <!-- Requirements content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Bidding Page -->
+        <div id="biddingPage" class="page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>Bidding</h1>
+                    <div class="page-actions">
+                        <div class="filter-group">
+                            <select id="biddingFilter" class="form-select">
+                                <option value="all">All Bids</option>
+                                <option value="active">Active</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="biddingContent">
+                    <!-- Bidding content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Page -->
+        <div id="ordersPage" class="page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>Orders</h1>
+                    <div class="page-actions">
+                        <div class="filter-group">
+                            <select id="ordersFilter" class="form-select">
+                                <option value="all">All Orders</option>
+                                <option value="active">Active</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="ordersContent">
+                    <!-- Orders content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents Page -->
+        <div id="documentsPage" class="page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>Documents</h1>
+                    <div class="page-actions">
+                        <button class="btn btn-primary" id="uploadDocumentBtn">
+                            <i class="fas fa-upload"></i> Upload Document
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="documentsContent">
+                    <!-- Documents content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analyticsPage" class="page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>Analytics</h1>
+                    <div class="page-actions">
+                        <select id="analyticsPeriod" class="form-select">
+                            <option value="7d">Last 7 days</option>
+                            <option value="30d" selected>Last 30 days</option>
+                            <option value="90d">Last 90 days</option>
+                            <option value="1y">Last year</option>
+                        </select>
+                        <button class="btn btn-secondary" id="exportDataBtn">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="analyticsContent">
+                    <!-- Analytics content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div id="modalContent" class="modal-content">
+            <!-- Modal content will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
