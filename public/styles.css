@@ -237,6 +237,13 @@ body {
     margin-bottom: 2rem;
 }
 
+.logo-section .main-logo {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
 .logo-section i {
     font-size: 4rem;
     color: var(--primary-color);
@@ -1103,6 +1110,11 @@ small {
     
     .welcome-container {
         padding: 1rem 0.5rem;
+    }
+    
+    .logo-section .main-logo {
+        width: 250px;
+        height: auto;
     }
     
     .logo-section h1 {
